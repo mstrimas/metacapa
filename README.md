@@ -3,7 +3,7 @@
 metacapa
 ========
 
-[![Travis-CI Build Status](https://img.shields.io/travis/mstrimas/meatacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/meatacapa) [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Travis-CI Build Status](https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/matacapa) [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
 
 Metapopulation capacity (Hanski & Ovaskainen 2000) is a relative measure of a spatially explicit landscape's ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization.
 
@@ -43,7 +43,7 @@ pc <- patch_config(r, "m")
 
 # metapopulation capacity
 meta_capacity(pc, f = f)
-#> [1] 1416820
+#> [1] 1417446
 ```
 
 In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.
@@ -70,5 +70,5 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 # calculate metapopulation capacity for each species
 mc_reserve(s, selected, disp_f)
 #>            a            b            c 
-#> 3.070978e-04 1.321986e-04 5.079817e-05
+#> 1.324761e-04 8.578884e-05 4.666467e-05
 ```

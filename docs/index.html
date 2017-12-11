@@ -90,7 +90,7 @@ pc &lt;-<span class="st"> </span><span class="kw"><a href="reference/patch_confi
 
 <span class="co"># metapopulation capacity</span>
 <span class="kw"><a href="reference/meta_capacity.html">meta_capacity</a></span>(pc, <span class="dt">f =</span> f)
-<span class="co">#&gt; [1] 594792.4</span></code></pre></div>
+<span class="co">#&gt; [1] 1823222</span></code></pre></div>
 <p>In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data for three species</span>
 <span class="co"># distributions</span>
@@ -113,7 +113,7 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 <span class="co"># calculate metapopulation capacity for each species</span>
 <span class="kw"><a href="reference/mc_reserve.html">mc_reserve</a></span>(s, selected, disp_f)
 <span class="co">#&gt;            a            b            c </span>
-<span class="co">#&gt; 2.039309e-04 1.844241e-04 8.650967e-05</span></code></pre></div>
+<span class="co">#&gt; 1.321450e-04 8.572780e-05 1.649539e-05</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -129,7 +129,8 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/mstrimas/meatacapa"><img src="https://img.shields.io/travis/mstrimas/meatacapa/master.svg?label=Mac%20OSX%20%26%20Linux" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
+<li><a href="https://travis-ci.org/mstrimas/matacapa"><img src="https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/mstrimas/metacapa"><img src="https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows" alt="AppVeyor Build Status"></a></li>
 </ul>
 </div>
