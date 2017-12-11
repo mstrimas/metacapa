@@ -16,7 +16,7 @@
 #' @name dispersal
 #' @examples
 #' dl <- dispersal_linear(10)
-#' dne <- disperal_negexp(1/5)
+#' dne <- dispersal_negexp(1/5)
 #' dl(5)
 #' dne(5)
 NULL

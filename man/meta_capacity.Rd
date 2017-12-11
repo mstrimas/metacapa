@@ -41,7 +41,7 @@ al. (2013) that includes self colonization.
 \examples{
 d <- matrix(c(0, 2, 4, 2, 0, 3, 4, 3, 0), nrow = 3)
 a <- c(1, 1.5, 0.5)
-f <- disperal_negexp(1)
+f <- dispersal_negexp(1)
 meta_capacity(d, a, f)
 
 r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea")

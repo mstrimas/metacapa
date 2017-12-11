@@ -4,7 +4,7 @@
 #' metapopulation capacities for a suite of species within a selected set of
 #' planning units.
 #'
-#' @param pu [raster::RasterStack], [sp::SpatialPolygonsDataFrame], or
+#' @param pu [raster::RasterStack-class], [sp::SpatialPolygonsDataFrame], or
 #'   [sf::sf] object; planning units and representation levels of features as
 #'   layers (raster inputs) or columns (vector inputs).
 #' @param x logical or binary; indicator variables specifying which planning

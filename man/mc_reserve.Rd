@@ -7,7 +7,7 @@
 mc_reserve(pu, x, f, threshold = 0, ...)
 }
 \arguments{
-\item{pu}{\link[raster:RasterStack]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or
+\item{pu}{\link[raster:RasterStack-class]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or
 \link[sf:sf]{sf::sf} object; planning units and representation levels of features as
 layers (raster inputs) or columns (vector inputs).}
 
