@@ -4,7 +4,8 @@
 \alias{mc_reserve}
 \title{Metapopulation capacity of a candidate reserve}
 \usage{
-mc_reserve(pu, x, f, threshold = 0, ...)
+mc_reserve(pu, x, f, threshold = 0, scale = 1, units = c("m", "km"),
+  parallel = FALSE, ...)
 }
 \arguments{
 \item{pu}{\link[raster:RasterStack-class]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or
@@ -19,6 +20,21 @@ layer/column names in \code{pu}.}
 
 \item{threshold}{numeric; representation level threshold required to consider
 a species present in a planning unit.}
+
+\item{scale}{numeric; vales to rescale the metapopulation capacity by, e.g.
+to normalize them between 0-1 one can scale by the maximum,
+species-specific metapopulation capacity given by selecting all planning
+units. This should be a vetor of length 1 or equal in length to the number
+of featurs.}
+
+\item{units}{character; metapopulation capacity depends on the units used for
+the areas and distances, this argument determines whether these are
+measured in meters or kilometers.}
+
+\item{parallel}{logical; whether to parallelize the metapopulation capacity
+calculations over the species. Parallelization is accomplished using
+\code{\link[foreach:foreach]{foreach::foreach()}} and requires registering a parallel backend with
+\code{\link[doParallel:registerDoParallel]{doParallel::registerDoParallel()}} prior to calling this function.}
 
 \item{...}{additional arguments passed on to \code{\link[=meta_capacity]{meta_capacity()}}.}
 }
@@ -48,4 +64,11 @@ mc_reserve(s, selected, disp_f)
 features <- raster::rasterToPolygons(s)
 features <- sf::st_as_sf(features)
 mc_reserve(features, selected, disp_f)
+
+# run in parallel
+\dontrun{
+library(doParallel)
+registerDoParallel(3)
+mc_reserve(features, selected, disp_f, parallel = TRUE)
+}
 }

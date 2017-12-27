@@ -5,7 +5,8 @@
 #'
 #' If the patch network is provided as a `Raster` object, cells included in the
 #' network should be 1, and background cells should be 0 or `NA`. Patches can
-#' also be provided as polygons from either the `sf` or `sp` packages.
+#' also be provided as polygons from either the `sf` or `sp` packages. Spatial
+#' data must be provided in projecred coordinates with units of meters.
 #'
 #' @param x patch network in raster or vector format, see Details.
 #' @param units character; whether distances and areas should be in meters or
@@ -25,46 +26,58 @@
 #' p_sp <- p_sp[p_sp$layer == 1, ]
 #' p_sp <- sp::disaggregate(p_sp)
 #' patch_config(p_sp, units = "km")
-patch_config <- function(x, units = c("km", "m")) {
+patch_config <- function(x, units = c("m", "km")) {
   UseMethod("patch_config")
 }
 
 #' @export
-patch_config.RasterLayer <- function(x, units = c("km", "m")) {
+patch_config.RasterLayer <- function(x, units = c("m", "km")) {
   if (raster::cellStats(x, 'sum') == 0) {
     out <- structure(list(areas = numeric(0),
                           distances = matrix(nrow = 0, ncol = 0)),
                      class = "patch_config")
     return(out)
   }
-  p <- raster::clump(x, directions = 8, gaps = F)
+  p <- raster::clump(x, directions = 4, gaps = F)
   p <- raster::rasterToPolygons(p, dissolve = TRUE)
   patch_config.SpatialPolygons(p, units = units)
 }
 
 #' @export
-patch_config.SpatialPolygons <- function(x, units = c("km", "m")) {
+patch_config.SpatialPolygons <- function(x, units = c("m", "km")) {
   patch_config.sf(sf::st_as_sf(x), units = units)
 }
 
 #' @export
-patch_config.sf <- function(x, units = c("km", "m")) {
+patch_config.sf <- function(x, units = c("m", "km")) {
   patch_config.sfc(sf::st_geometry(x), units = units)
 }
 
 #' @export
-patch_config.sfc <- function(x, units = c("km", "m")) {
+patch_config.sfc <- function(x, units = c("m", "km")) {
   stopifnot(all(sf::st_geometry_type(x) %in% c("MULTIPOLYGON", "POLYGON")))
   units <- match.arg(units)
   if (grepl("longlat", sf::st_crs(x)$proj4string)) {
     stop("Patch network must be in projected coordinates.")
   }
-  d <- sf::st_distance(x)
+
+  # distance matrix
+  if (requireNamespace("rgeos", quietly = TRUE)) {
+    d <- rgeos::gDistance(methods::as(x, "Spatial"), byid = TRUE)
+    dimnames(d) <- NULL
+    d <- units::set_units(d, projection_units(x))
+  } else {
+    d <- sf::st_distance(x)
+  }
+  # change units
   uuu <- units
   d <- units::set_units(d, uuu)
   d <- matrix(d, dim(d)[1], dim(d)[2])
+
+  # areas
   a <- sf::st_area(x)
   uuu <- paste0(units, "^2")
+  # change units
   a <- units::set_units(a, uuu)
   a <- as.numeric(a)
   structure(list(areas = a, distances = d), class = "patch_config")

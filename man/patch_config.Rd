@@ -4,7 +4,7 @@
 \alias{patch_config}
 \title{Calculate interpatch distances and areas}
 \usage{
-patch_config(x, units = c("km", "m"))
+patch_config(x, units = c("m", "km"))
 }
 \arguments{
 \item{x}{patch network in raster or vector format, see Details.}
@@ -23,7 +23,8 @@ interpatch distances.
 \details{
 If the patch network is provided as a \code{Raster} object, cells included in the
 network should be 1, and background cells should be 0 or \code{NA}. Patches can
-also be provided as polygons from either the \code{sf} or \code{sp} packages.
+also be provided as polygons from either the \code{sf} or \code{sp} packages. Spatial
+data must be provided in projecred coordinates with units of meters.
 }
 \examples{
 # raster
