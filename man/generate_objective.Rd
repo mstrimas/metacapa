@@ -56,8 +56,8 @@ calculations over the species. Parallelization is accomplished using
 \code{\link[doParallel:registerDoParallel]{doParallel::registerDoParallel()}} prior to calling this function.}
 }
 \value{
-A function that given a logical vector specifying which planning
-units are selected returns the corresponding objective function value. If
+A function that, given a logical vector specifying which planning
+units are selected, returns the corresponding objective function value. If
 the objective function is called with \code{components = FALSE}, then a list is
 returned with the three components of the object function:
 \itemize{

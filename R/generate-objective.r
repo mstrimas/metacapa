@@ -28,8 +28,8 @@
 #'   vector planning units), or a `RasterLayer` of costs (for `Raster` planning
 #'   units.
 #'
-#' @return A function that given a logical vector specifying which planning
-#'   units are selected returns the corresponding objective function value. If
+#' @return A function that, given a logical vector specifying which planning
+#'   units are selected, returns the corresponding objective function value. If
 #'   the objective function is called with `components = FALSE`, then a list is
 #'   returned with the three components of the object function:
 #'   - `mc`: the metapoplation capacity of each species.

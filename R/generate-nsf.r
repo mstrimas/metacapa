@@ -48,12 +48,12 @@
 #' selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.9, 0.1))
 #'
 #' # generate neighbour selection function
-#' neighbour <- generate_nf(pus, buffer = 20, locked = "locked_out")
+#' neighbour <- generate_nsf(pus, buffer = 20, locked = "locked_out")
 #'
 #' # neighbouring solution
 #' neighbour(selected)
 #' neighbour(selected, pu_list = TRUE)
-generate_nf <- function(pu, buffer, locked, recalculate = 1L) {
+generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
   stopifnot(inherits(pu, c("sf", "SpatialPolygonsDataFrame")))
   stopifnot(is.numeric(buffer))
   stopifnot(length(buffer) == 1)
