@@ -102,7 +102,8 @@ generate_objective <- function(pu, f, budget, delta, blm = 0,
   function(x, components = FALSE) {
     x <- as.logical(x)
     # metapopulation capacity term
-    mc <- mc_reserve(pu, x, f, scale = scale, units = units, parallel = parallel)
+    mc <- mc_reserve(pu, x, f, scale = scale, units = units,
+                     parallel = parallel)
     mc_term <- sum(benefit(mc))
 
     # cost
