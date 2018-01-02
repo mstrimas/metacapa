@@ -1,20 +1,12 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: R
+language: r
+sudo: true
 cache: packages
-latex: false
-sudo: required
-apt_packages: libudunits2-dev
+apt_packages:
+  - libudunits2-dev
+
 r:
   - release
   - oldrel
-#  - devel
-
-matrix:
-  include:
-    - os: linux
-    - os: osx
 
 after_success:
   - Rscript -e 'covr::codecov()'
-
