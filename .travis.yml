@@ -3,6 +3,7 @@
 language: R
 cache: packages
 latex: false
+sudo: required
 apt_packages: libudunits2-dev
 r:
   - release
@@ -12,14 +13,7 @@ r:
 matrix:
   include:
     - os: linux
-      dist: trusty
-      sudo: required
-      r_build_args: '--no-build-vignettes'
-      r_check_args: '--ignore-vignettes'
     - os: osx
-      latex: false
-      r_build_args: '--no-build-vignettes'
-      r_check_args: '--ignore-vignettes --no-examples'
 
 after_success:
   - Rscript -e 'covr::codecov()'
