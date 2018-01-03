@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Metapopulation capacity of a candidate reserve — mc_reserve • metacapa</title>
+<title>Generate objective function — generate_objective • metacapa</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -75,17 +75,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Metapopulation capacity of a candidate reserve</h1>
+    <h1>Generate objective function</h1>
     </div>
 
     
-    <p>For use in conservation prioritization exercises, this function computes the
-metapopulation capacities for a suite of species within a selected set of
-planning units.</p>
+    <p>Generate an objective function to perform the metapopulation capacity-based
+conservation prioritization developed by Strimas-Mackey and Brodie (2018).
+This objective function maximizes the average metapopulation capacity across
+species for a fixed budget. There is an optional additional term, similar to
+the boundary term in Marxan, that can be used to favour more compact
+solutions.</p>
     
 
-    <pre class="usage"><span class='fu'>mc_reserve</span>(<span class='no'>pu</span>, <span class='no'>x</span>, <span class='no'>f</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"m"</span>, <span class='st'>"km"</span>),
-  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>generate_objective</span>(<span class='no'>pu</span>, <span class='no'>f</span>, <span class='no'>budget</span>, <span class='no'>delta</span>, <span class='kw'>blm</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fu'>length</span>(<span class='no'>f</span>)),
+  <span class='kw'>benefit</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>y</span>) <span class='no'>y</span>, <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"cost"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"m"</span>, <span class='st'>"km"</span>),
+  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -97,19 +101,29 @@ planning units.</p>
 layers (raster inputs) or columns (vector inputs).</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>logical or binary; indicator variables specifying which planning
-units are included.</p></td>
-    </tr>
-    <tr>
       <th>f</th>
       <td><p>named list of dispersal survival functions with names matching the
 layer/column names in <code>pu</code>.</p></td>
     </tr>
     <tr>
-      <th>threshold</th>
-      <td><p>numeric; representation level threshold required to consider
-a species present in a planning unit.</p></td>
+      <th>budget</th>
+      <td><p>numeric; the target budget for the prioritization exercise.</p></td>
+    </tr>
+    <tr>
+      <th>delta</th>
+      <td><p>numeric; a scale factor to apply to the budget term in the
+objective function that determines. To use simulated annealing for the
+optimization, the budget constraint must be incorporated directly into the
+objective function. This argument determines the relative importance to be
+placed on maximizing the metapopulation capacity compared to meeting the
+budget constraint.</p></td>
+    </tr>
+    <tr>
+      <th>blm</th>
+      <td><p>numeric; a scale factor to apply to the perimeter term in the
+objective function that determines the relative importance to be
+placed on maximizing the metapopulation capacity compared to producing more
+compact solutions.</p></td>
     </tr>
     <tr>
       <th>scale</th>
@@ -118,6 +132,20 @@ to normalize them between 0-1 one can scale by the maximum,
 species-specific metapopulation capacity given by selecting all planning
 units. This should be a vetor of length 1 or equal in length to the number
 of featurs.</p></td>
+    </tr>
+    <tr>
+      <th>benefit</th>
+      <td><p>function; a function to apply to the scaled metapopulation
+capacity before averaging across species. Often a saturating function is
+used to ensure that less value is given to changes in metapopulation
+capacity for species that are already near their maximum.</p></td>
+    </tr>
+    <tr>
+      <th>cost</th>
+      <td><p>name of the cost column or layer in the planning unit object,
+<code>pu</code>, a numeric vector of costs in the same order as the rows of <code>pu</code> (for
+vector planning units), or a <code>RasterLayer</code> of costs (for <code>Raster</code> planning
+units.</p></td>
     </tr>
     <tr>
       <th>units</th>
@@ -132,42 +160,60 @@ calculations over the species. Parallelization is accomplished using
 <code><a href='http://www.rdocumentation.org/packages/foreach/topics/foreach'>foreach::foreach()</a></code> and requires registering a parallel backend with
 <code><a href='http://www.rdocumentation.org/packages/doParallel/topics/registerDoParallel'>doParallel::registerDoParallel()</a></code> prior to calling this function.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments passed on to <code><a href='meta_capacity.html'>meta_capacity()</a></code>.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric vector of metapopulation capacities for each species.</p>
+    <p>A function that, given a logical vector specifying which planning
+units are selected, returns the corresponding objective function value. If
+the objective function is called with <code>components = FALSE</code>, then a list is
+returned with the three components of the object function:</p><ul>
+<li><p><code>mc</code>: the metapoplation capacity of each species.</p></li>
+<li><p><code>cost</code>: the cost of the reserve network.</p></li>
+<li><p><code>boundary</code>: the total boundary length, in km, of the reserve network.</p></li>
+</ul>
+
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># generate data</span>
+    <pre class="examples"><div class='input'><span class='co'># generate features</span>
 <span class='no'>r</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/raster'>raster</a></span>(<span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>crs</span> <span class='kw'>=</span> <span class='st'>"+proj=aea"</span>,
                     <span class='kw'>vals</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>0</span>:<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/stack'>stack</a></span>(<span class='no'>r</span>, <span class='no'>r</span>, <span class='no'>r</span>)
 <span class='no'>s</span><span class='kw'>[[</span><span class='fl'>2</span>]][] <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>0</span>:<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.6</span>, <span class='fl'>0.4</span>))
 <span class='no'>s</span><span class='kw'>[[</span><span class='fl'>3</span>]][] <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>0</span>:<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.8</span>, <span class='fl'>0.2</span>))
 <span class='fu'>names</span>(<span class='no'>s</span>) <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>)
-<span class='no'>selected</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fu'>c</span>(<span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>), <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.7</span>, <span class='fl'>0.3</span>))
+<span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/rasterToPolygons'>rasterToPolygons</a></span>(<span class='no'>s</span>)
+<span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sf/topics/st_as_sf'>st_as_sf</a></span>(<span class='no'>features</span>)
+<span class='co'># cost</span>
+<span class='no'>features</span>$<span class='no'>cost</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fu'>nrow</span>(<span class='no'>features</span>))
+<span class='co'># dispersal functions</span>
 <span class='no'>disp_f</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.01</span>),
                <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.005</span>),
                <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.02</span>))
-<span class='fu'>mc_reserve</span>(<span class='no'>s</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;        a        b        c 
-#&gt; 93312.00 32990.77 16495.39 </div><div class='input'>
-<span class='co'># vector data</span>
-<span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/rasterToPolygons'>rasterToPolygons</a></span>(<span class='no'>s</span>)
-<span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sf/topics/st_as_sf'>st_as_sf</a></span>(<span class='no'>features</span>)
-<span class='fu'>mc_reserve</span>(<span class='no'>features</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;        a        b        c 
-#&gt; 93312.00 32990.77 16495.39 </div><div class='input'>
-# run in parallel
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>library</span>(<span class='no'>doParallel</span>)
-<span class='fu'><a href='http://www.rdocumentation.org/packages/doParallel/topics/registerDoParallel'>registerDoParallel</a></span>(<span class='fl'>3</span>)
-<span class='fu'>mc_reserve</span>(<span class='no'>features</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='co'># }</span></pre>
+
+<span class='co'># calculate scale factors</span>
+<span class='no'>scale_mc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mc_reserve.html'>mc_reserve</a></span>(<span class='no'>features</span>, <span class='fu'>rep</span>(<span class='fl'>TRUE</span>, <span class='fu'>nrow</span>(<span class='no'>features</span>)), <span class='no'>disp_f</span>)
+
+<span class='co'># set budget at 50% of total</span>
+<span class='no'>budget</span> <span class='kw'>&lt;-</span> <span class='fl'>0.5</span> * <span class='fu'>sum</span>(<span class='no'>features</span>$<span class='no'>cost</span>)
+
+<span class='co'># build an objective function</span>
+<span class='no'>objective</span> <span class='kw'>&lt;-</span> <span class='fu'>generate_objective</span>(<span class='no'>features</span>, <span class='no'>disp_f</span>, <span class='no'>budget</span>, <span class='kw'>delta</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
+                                <span class='kw'>blm</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"km"</span>)
+
+<span class='co'># calculate objective</span>
+<span class='no'>selected</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fu'>c</span>(<span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>), <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.7</span>, <span class='fl'>0.3</span>))
+<span class='fu'>objective</span>(<span class='no'>selected</span>, <span class='kw'>components</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $mc
+#&gt;           a           b           c 
+#&gt; 1.48870e-04 8.57889e-05 5.75590e-05 
+#&gt; 
+#&gt; $cost
+#&gt; [1] 16.64237
+#&gt; 
+#&gt; $boundary
+#&gt; [1] 2.412
+#&gt; </div><div class='input'><span class='fu'>objective</span>(<span class='no'>selected</span>)</div><div class='output co'>#&gt; [1] -0.002119782</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
