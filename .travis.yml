@@ -1,10 +1,14 @@
 language: r
-sudo: true
-cache: packages
-
 r:
   - release
   - oldrel
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: osx
 
 before_install:
   - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
@@ -13,6 +17,3 @@ before_install:
   - sudo apt-get install --yes libudunits2-dev
   # sf dependencies:
   - sudo apt-get install --yes libproj-dev libgeos-dev libgdal-dev
-
-after_success:
-  - Rscript -e 'covr::codecov()'

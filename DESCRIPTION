@@ -6,7 +6,7 @@ Description:
   Tools for calculating Hanski and Ovaskainen's (2000) metapopulation capcity, 
   a relative metric of metapopulation persistence, and performing 
   persistence-based conservation prioritization based on this metric.
-Depends: R (>= 3.4.2)
+Depends: R (>= 3.3.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

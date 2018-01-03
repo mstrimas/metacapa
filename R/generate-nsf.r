@@ -69,8 +69,8 @@ generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
     locked <- which(as.logical(pu[[locked]][]))
   } else {
     if (inherits(pu, "Raster")) {
-      stopifnot(inherits(cost, "RasterLayer"))
-      stopifnot(raster::compareRaster(pu, cost))
+      stopifnot(inherits(locked, "RasterLayer"))
+      stopifnot(raster::compareRaster(pu, locked))
       locked <- which(locked[] == 1)
     } else {
       stopifnot(is.integer(locked))
