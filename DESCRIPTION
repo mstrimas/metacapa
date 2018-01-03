@@ -15,7 +15,7 @@ Imports:
     sf,
     sp,
     units,
-    udunits2 (>= 0.13)
+    udunits2 (>= 0.13),
     methods,
     foreach,
     doParallel,
