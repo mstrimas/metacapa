@@ -55,15 +55,13 @@
 #' neighbour(selected, pu_list = TRUE)
 generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
   stopifnot(inherits(pu, c("sf", "SpatialPolygonsDataFrame")))
-  stopifnot(is.numeric(buffer))
-  stopifnot(length(buffer) == 1)
-  stopifnot(buffer >= 0)
-  stopifnot(is.integer(recalculate))
-  stopifnot(length(recalculate) == 1)
-  stopifnot(recalculate > 0)
+  stopifnot(is.numeric(buffer), length(buffer) == 1, buffer >= 0)
+  stopifnot(is.integer(recalculate), length(recalculate) == 1, recalculate > 0)
 
   # handle locked in/out
-  if (is.character(locked)) {
+  if (missing(locked)) {
+    locked <- integer()
+  } else if (is.character(locked)) {
     stopifnot(length(locked) == 1)
     stopifnot(locked %in% names(pu))
     locked <- which(as.logical(pu[[locked]][]))

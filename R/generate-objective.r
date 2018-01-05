@@ -74,28 +74,20 @@ generate_objective <- function(pu, f, budget, delta, blm = 0,
                                units = c("m", "km"),
                                parallel = FALSE) {
   stopifnot(inherits(pu, c("Raster", "sf", "SpatialPolygonsDataFrame")))
-  stopifnot(is.numeric(budget))
-  stopifnot(length(budget) == 1)
-  stopifnot(budget > 0)
-  stopifnot(is.numeric(delta))
-  stopifnot(length(delta) == 1)
-  stopifnot(delta > 0)
-  stopifnot(is.numeric(blm))
-  stopifnot(length(blm) == 1)
+  stopifnot(is.numeric(budget), length(budget) == 1, budget > 0)
+  stopifnot(is.numeric(delta), length(delta) == 1, delta > 0)
+  stopifnot(is.numeric(blm), length(blm) == 1)
   stopifnot(is.function(benefit))
   units <- match.arg(units)
 
   if (is.character(cost)) {
-    stopifnot(length(cost) == 1)
-    stopifnot(cost %in% names(pu))
+    stopifnot(length(cost) == 1, cost %in% names(pu))
     cost <- pu[[cost]]
   } else {
     if (inherits(pu, "Raster")) {
-      stopifnot(inherits(cost, "RasterLayer"))
-      stopifnot(raster::compareRaster(pu, cost))
+      stopifnot(inherits(cost, "RasterLayer"), raster::compareRaster(pu, cost))
     } else {
-      stopifnot(is.numeric(cost))
-      stopifnot(length(cost) == nrow(pu))
+      stopifnot(is.numeric(cost), length(cost) == nrow(pu))
     }
   }
 

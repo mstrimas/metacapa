@@ -58,9 +58,9 @@ meta_capacity.matrix <- function(x, a, f, ex = 0.5, self = TRUE,
                                  patch_mc = FALSE, ...) {
   stopifnot(is.numeric(a))
   stopifnot(is.function(f))
-  stopifnot(is.numeric(ex) && length(ex) == 1)
-  stopifnot(is.logical(self) && length(self) == 1)
-  stopifnot(is.logical(patch_mc) && length(patch_mc) == 1)
+  stopifnot(is.numeric(ex), length(ex) == 1)
+  stopifnot(is.logical(self), length(self) == 1)
+  stopifnot(is.logical(patch_mc), length(patch_mc) == 1)
 
   # if there are no patches return 0 for metapopulation capacity
   if (is.null(a)) {

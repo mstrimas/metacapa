@@ -28,8 +28,7 @@ reserve_perimeter.SpatialPolygonsDataFrame <- function(pu, x,
 #' @export
 reserve_perimeter.sf <- function(pu, x, units = c("m", "km")) {
   stopifnot(all(sf::st_geometry_type(pu) %in% c("MULTIPOLYGON", "POLYGON")))
-  stopifnot(is.logical(x))
-  stopifnot(length(x) == nrow(pu))
+  stopifnot(is.logical(x), length(x) == nrow(pu))
   units <- match.arg(units)
   if (grepl("longlat", sf::st_crs(pu)$proj4string)) {
     stop("Patch network must be in projected coordinates.")

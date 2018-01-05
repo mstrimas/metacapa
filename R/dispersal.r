@@ -24,9 +24,7 @@ NULL
 #' @rdname dispersal
 #' @export
 dispersal_linear <- function(dmax) {
-  stopifnot(is.numeric(dmax))
-  stopifnot(!is.na(dmax))
-  stopifnot(length(dmax) == 1)
+  stopifnot(is.numeric(dmax), !is.na(dmax), length(dmax) == 1)
 
   function(d) {
     d <- abs(d)
