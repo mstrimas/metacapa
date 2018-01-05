@@ -63,9 +63,9 @@ mc_prioritize <- function(objective, nsf, x, n = 10000L, itemp = 10,
                           n_temp = 10L, maximize = TRUE, verbose = TRUE) {
   stopifnot(is.function(objective), is.function(nsf))
   stopifnot(is.logical(x) || all(x %in% c(0, 1)))
-  stopifnot(is.integer(n), length(n) == 1)
+  stopifnot(is_count(n))
   stopifnot(is.numeric(itemp), length(itemp) == 1)
-  stopifnot(is.integer(n_temp), length(n_temp) == 1)
+  stopifnot(is_count(n_temp))
   stopifnot(is.logical(maximize), length(maximize) == 1)
   stopifnot(is.logical(verbose), length(verbose) == 1)
 

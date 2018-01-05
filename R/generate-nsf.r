@@ -56,7 +56,7 @@
 generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
   stopifnot(inherits(pu, c("sf", "SpatialPolygonsDataFrame")))
   stopifnot(is.numeric(buffer), length(buffer) == 1, buffer >= 0)
-  stopifnot(is.integer(recalculate), length(recalculate) == 1, recalculate > 0)
+  stopifnot(is_count(recalculate))
 
   # handle locked in/out
   if (missing(locked)) {
