@@ -43,7 +43,7 @@ pc <- patch_config(r, "m")
 
 # metapopulation capacity
 meta_capacity(pc, f = f)
-#> [1] 622020.1
+#> [1] 666812.5
 ```
 
 In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.
@@ -70,7 +70,7 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 # calculate metapopulation capacity for each species
 mc_reserve(s, selected, disp_f)
 #>        a        b        c 
-#> 64726.40 85712.55 16495.39
+#> 85712.55 46656.00 32990.77
 ```
 
 References
@@ -80,4 +80,4 @@ References
 
     Schnell, J.K., G.M. Harris, S.L. Pimm, and G.J. Russel (2013), Estimating extinction risk with metapopulation models of large-scale fragmentation. Conservation Biology, 27: 520–530. doi:10.1111/cobi.12047
 
-    Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. Ecological Applications, in review.
+    Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. In Review.

@@ -87,5 +87,5 @@ Hanski, I., and O. Ovaskainen (2000), The metapopulation capacity of a fragmente
 
 Schnell, J.K., G.M. Harris, S.L. Pimm, and G.J. Russel (2013), Estimating extinction risk with metapopulation models of large-scale fragmentation. Conservation Biology, 27: 520–530. doi:10.1111/cobi.12047
 
-Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. Ecological Applications, in review.
+Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. In Review.
 ```
