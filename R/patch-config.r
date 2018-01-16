@@ -65,20 +65,19 @@ patch_config.sfc <- function(x, units = c("m", "km")) {
   if (requireNamespace("rgeos", quietly = TRUE)) {
     d <- rgeos::gDistance(methods::as(x, "Spatial"), byid = TRUE)
     dimnames(d) <- NULL
-    d <- units::set_units(d, projection_units(x))
+    d <- units::set_units(d, projection_units(x), mode = "standard")
   } else {
     d <- sf::st_distance(x)
   }
   # change units
-  uuu <- units
-  d <- units::set_units(d, uuu)
+  d <- units::set_units(d, units, mode = "standard")
   d <- matrix(d, dim(d)[1], dim(d)[2])
 
   # areas
   a <- sf::st_area(x)
-  uuu <- paste0(units, "^2")
   # change units
-  a <- units::set_units(a, uuu)
+  uuu <- paste0(units, "^2")
+  a <- units::set_units(a, uuu, mode = "standard")
   a <- as.numeric(a)
   structure(list(areas = a, distances = d), class = "patch_config")
 }

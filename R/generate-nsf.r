@@ -87,7 +87,7 @@ generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
     if ((counter %% recalculate) == 0) {
       patches <- sf::st_union(pu[x, ])
       # edge of existing reserves, both inside and outside
-      borders <- sf::st_cast(patches, "MULTILINESTRING")
+      borders <- sf::st_cast(patches[[1]], "MULTILINESTRING")
       border_pu <- purrr::map_lgl(sf::st_intersects(pu, borders),
                                   ~ length(.x) > 0)
 

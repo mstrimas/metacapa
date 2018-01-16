@@ -37,5 +37,5 @@ reserve_perimeter.sf <- function(pu, x, units = c("m", "km")) {
   uuu <- units
   patches <- sf::st_union(pu[as.logical(x), ])
   perimeter <- sum(sf::st_length(patches))
-  units::set_units(perimeter, uuu)
+  units::set_units(perimeter, uuu, mode = "standard")
 }
