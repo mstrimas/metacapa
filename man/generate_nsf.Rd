@@ -65,6 +65,7 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.9, 0.1))
 neighbour <- generate_nsf(pus, buffer = 20, locked = "locked_out")
 
 # neighbouring solution
+print(devtools::session_info())
 neighbour(selected)
 neighbour(selected, pu_list = TRUE)
 }
