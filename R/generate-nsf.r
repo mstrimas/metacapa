@@ -51,7 +51,7 @@
 #' neighbour <- generate_nsf(pus, buffer = 20, locked = "locked_out")
 #'
 #' # neighbouring solution
-#' print(devtools::session_info())
+#' print(sessionInfo())
 #' neighbour(selected)
 #' neighbour(selected, pu_list = TRUE)
 generate_nsf <- function(pu, buffer, locked, recalculate = 1L) {
