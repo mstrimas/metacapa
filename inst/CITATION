@@ -1,0 +1,19 @@
+citHeader("To cite metacapa in publications use:")
+
+citEntry(
+  entry        = "Manual",
+  title        = "metacapa: Metapopulation Capacity-based Conservation Prioritization",
+  author       = personList(
+                   as.person("Matthew Strimas-Mackey"),
+                   as.person("Jedediah F. Brodie")
+                 ),
+  year         = "2018",
+  note         = "R package version 0.1.0",
+  url          = "http://strimas.com/metacapa/",
+
+  textVersion  =
+  paste("Matthew Strimas-Mackey and Jedediah F. Brodie (2018).",
+        "metacapa: Metapopulation Capacity-based Conservation Prioritization.",
+        "R package version 0.1.0.",
+        "http://strimas.com/metacapa/")
+)

@@ -1,7 +1,10 @@
 Package: metacapa
 Title: Metapopulation Capacity-based Conservation Prioritization
-Version: 0.0.1
-Authors@R: person("Matthew", "Strimas-Mackey", email = "mstrimas@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8929-7776"))
+Version: 0.1.0
+Authors@R: c(
+  person("Matthew", "Strimas-Mackey", email = "mstrimas@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8929-7776")),
+  person("Matthew", "Strimas-Mackey", email = "jedediah.brodie@mso.umt.edu", role = c("ctb"))
+  )
 Description:
   Tools for calculating Hanski and Ovaskainen's (2000) metapopulation capcity, 
   a relative metric of metapopulation persistence, and performing 
