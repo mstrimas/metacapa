@@ -31,7 +31,7 @@ patch_config <- function(x, units = c("m", "km")) {
 }
 
 #' @export
-patch_config.RasterLayer <- function(x, units = c("m", "km")) {
+patch_config.RasterLayer <- function(x, units = c("km", "m")) {
   if (raster::cellStats(x, 'sum') == 0) {
     out <- structure(list(areas = numeric(0),
                           distances = matrix(nrow = 0, ncol = 0)),
@@ -44,17 +44,17 @@ patch_config.RasterLayer <- function(x, units = c("m", "km")) {
 }
 
 #' @export
-patch_config.SpatialPolygons <- function(x, units = c("m", "km")) {
+patch_config.SpatialPolygons <- function(x, units = c("km", "m")) {
   patch_config.sf(sf::st_as_sf(x), units = units)
 }
 
 #' @export
-patch_config.sf <- function(x, units = c("m", "km")) {
+patch_config.sf <- function(x, units = c("km", "m")) {
   patch_config.sfc(sf::st_geometry(x), units = units)
 }
 
 #' @export
-patch_config.sfc <- function(x, units = c("m", "km")) {
+patch_config.sfc <- function(x, units = c("km", "m")) {
   stopifnot(all(sf::st_geometry_type(x) %in% c("MULTIPOLYGON", "POLYGON")))
   units <- match.arg(units)
   if (grepl("longlat", sf::st_crs(x)$proj4string)) {

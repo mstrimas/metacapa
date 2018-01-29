@@ -30,11 +30,12 @@
 #'
 #' @return A function that, given a logical vector specifying which planning
 #'   units are selected, returns the corresponding objective function value. If
-#'   the objective function is called with `components = FALSE`, then a list is
+#'   the objective function is called with `components = TRUE`, then a list is
 #'   returned with the three components of the object function:
 #'   - `mc`: the metapoplation capacity of each species.
 #'   - `cost`: the cost of the reserve network.
-#'   - `boundary`: the total boundary length, in km, of the reserve network.
+#'   - `perimeter`: the total perimeter length, in the specified units, of the
+#'   reserve network.
 #' @export
 #' @examples
 #' # generate features
@@ -61,7 +62,7 @@
 #'
 #' # build an objective function
 #' objective <- generate_objective(features, disp_f, budget, delta = 0.001,
-#'                                 blm = 0.001, units = "km")
+#'                                 blm = 0.001)
 #'
 #' # calculate objective
 #' selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
@@ -71,7 +72,7 @@ generate_objective <- function(pu, f, budget, delta, blm = 0,
                                scale = rep(1, length(f)),
                                benefit = function(y) y,
                                cost = "cost",
-                               units = c("m", "km"),
+                               units = c("km", "m"),
                                parallel = FALSE) {
   stopifnot(inherits(pu, c("Raster", "sf", "SpatialPolygonsDataFrame")))
   stopifnot(is.numeric(budget), length(budget) == 1, budget > 0)
@@ -106,7 +107,7 @@ generate_objective <- function(pu, f, budget, delta, blm = 0,
     if (blm > 0) {
       perimeter <- as.numeric(reserve_perimeter(pu, x, units = units))
       if (components) {
-        return(list(mc = mc, cost = cost_total, boundary = perimeter))
+        return(list(mc = mc, cost = cost_total, perimeter = perimeter))
       } else {
         return(mc_term - delta * budget_term - blm * perimeter)
       }

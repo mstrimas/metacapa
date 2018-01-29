@@ -5,7 +5,7 @@
 \title{Generate objective function}
 \usage{
 generate_objective(pu, f, budget, delta, blm = 0, scale = rep(1, length(f)),
-  benefit = function(y) y, cost = "cost", units = c("m", "km"),
+  benefit = function(y) y, cost = "cost", units = c("km", "m"),
   parallel = FALSE)
 }
 \arguments{
@@ -58,12 +58,13 @@ calculations over the species. Parallelization is accomplished using
 \value{
 A function that, given a logical vector specifying which planning
 units are selected, returns the corresponding objective function value. If
-the objective function is called with \code{components = FALSE}, then a list is
+the objective function is called with \code{components = TRUE}, then a list is
 returned with the three components of the object function:
 \itemize{
 \item \code{mc}: the metapoplation capacity of each species.
 \item \code{cost}: the cost of the reserve network.
-\item \code{boundary}: the total boundary length, in km, of the reserve network.
+\item \code{perimeter}: the total perimeter length, in the specified units, of the
+reserve network.
 }
 }
 \description{
@@ -99,7 +100,7 @@ budget <- 0.5 * sum(features$cost)
 
 # build an objective function
 objective <- generate_objective(features, disp_f, budget, delta = 0.001,
-                                blm = 0.001, units = "km")
+                                blm = 0.001)
 
 # calculate objective
 selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))

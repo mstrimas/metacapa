@@ -4,7 +4,7 @@
 \alias{reserve_perimeter}
 \title{Caculate the perimeter of a reserve network}
 \usage{
-reserve_perimeter(pu, x, units = c("m", "km"))
+reserve_perimeter(pu, x, units = c("km", "m"))
 }
 \arguments{
 \item{pu}{\link[raster:RasterStack-class]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or

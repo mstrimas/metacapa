@@ -54,14 +54,14 @@
 #' registerDoParallel(3)
 #' mc_reserve(features, selected, disp_f, parallel = TRUE)
 #' }
-mc_reserve <- function(pu, x, f, threshold = 0, scale = 1, units = c("m", "km"),
+mc_reserve <- function(pu, x, f, threshold = 0, scale = 1, units = c("km", "m"),
                        parallel = FALSE, ...) {
   UseMethod("mc_reserve")
 }
 
 #' @export
 mc_reserve.Raster <- function(pu, x, f, threshold = 0, scale = 1,
-                              units = c("m", "km"), parallel = FALSE, ...) {
+                              units = c("km", "m"), parallel = FALSE, ...) {
   stopifnot(length(x) == raster::ncell(pu))
   stopifnot(all(names(f) %in% names(pu)))
   stopifnot(is.logical(parallel) && length(parallel) == 1)
@@ -99,14 +99,14 @@ mc_reserve.Raster <- function(pu, x, f, threshold = 0, scale = 1,
 
 #' @export
 mc_reserve.SpatialPolygonsDataFrame <- function(pu, x, f, threshold = 0,
-                                                scale = 1, units = c("m", "km"),
+                                                scale = 1, units = c("km", "m"),
                                                 parallel = FALSE, ...) {
   mc_reserve.sf(sf::st_as_sf(pu), x = x, f = f, threshold = threshold)
 }
 
 #' @export
 mc_reserve.sf <- function(pu, x, f, threshold = 0, scale = 1,
-                          units = c("m", "km"), parallel = FALSE, ...) {
+                          units = c("km", "m"), parallel = FALSE, ...) {
   stopifnot(length(x) == nrow(pu))
   stopifnot(all(names(f) %in% names(pu)))
   stopifnot(length(scale) %in% c(1, length(f)))

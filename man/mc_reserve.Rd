@@ -4,7 +4,7 @@
 \alias{mc_reserve}
 \title{Metapopulation capacity of a candidate reserve}
 \usage{
-mc_reserve(pu, x, f, threshold = 0, scale = 1, units = c("m", "km"),
+mc_reserve(pu, x, f, threshold = 0, scale = 1, units = c("km", "m"),
   parallel = FALSE, ...)
 }
 \arguments{
