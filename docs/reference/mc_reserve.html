@@ -84,7 +84,7 @@ metapopulation capacities for a suite of species within a selected set of
 planning units.</p>
     
 
-    <pre class="usage"><span class='fu'>mc_reserve</span>(<span class='no'>pu</span>, <span class='no'>x</span>, <span class='no'>f</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"m"</span>, <span class='st'>"km"</span>),
+    <pre class="usage"><span class='fu'>mc_reserve</span>(<span class='no'>pu</span>, <span class='no'>x</span>, <span class='no'>f</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"km"</span>, <span class='st'>"m"</span>),
   <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -155,13 +155,13 @@ calculations over the species. Parallelization is accomplished using
 <span class='no'>disp_f</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.01</span>),
                <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.005</span>),
                <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'><a href='dispersal.html'>dispersal_negexp</a></span>(<span class='fl'>1</span> / <span class='fl'>0.02</span>))
-<span class='fu'>mc_reserve</span>(<span class='no'>s</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;         a         b         c 
-#&gt; 184424.03  85712.55  46656.00 </div><div class='input'>
+<span class='fu'>mc_reserve</span>(<span class='no'>s</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;            a            b            c 
+#&gt; 1.854438e-04 8.571256e-05 4.787157e-05 </div><div class='input'>
 <span class='co'># vector data</span>
 <span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/rasterToPolygons'>rasterToPolygons</a></span>(<span class='no'>s</span>)
 <span class='no'>features</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sf/topics/st_as_sf'>st_as_sf</a></span>(<span class='no'>features</span>)
-<span class='fu'>mc_reserve</span>(<span class='no'>features</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;         a         b         c 
-#&gt; 184424.03  85712.55  46656.00 </div><div class='input'>
+<span class='fu'>mc_reserve</span>(<span class='no'>features</span>, <span class='no'>selected</span>, <span class='no'>disp_f</span>)</div><div class='output co'>#&gt;            a            b            c 
+#&gt; 1.854438e-04 8.571256e-05 4.787157e-05 </div><div class='input'>
 # run in parallel
 </div><span class='co'># NOT RUN {</span>
 <span class='fu'>library</span>(<span class='no'>doParallel</span>)

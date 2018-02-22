@@ -88,7 +88,7 @@ solutions.</p>
     
 
     <pre class="usage"><span class='fu'>generate_objective</span>(<span class='no'>pu</span>, <span class='no'>f</span>, <span class='no'>budget</span>, <span class='no'>delta</span>, <span class='kw'>blm</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fu'>length</span>(<span class='no'>f</span>)),
-  <span class='kw'>benefit</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>y</span>) <span class='no'>y</span>, <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"cost"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"m"</span>, <span class='st'>"km"</span>),
+  <span class='kw'>benefit</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>y</span>) <span class='no'>y</span>, <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"cost"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"km"</span>, <span class='st'>"m"</span>),
   <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -166,11 +166,12 @@ calculations over the species. Parallelization is accomplished using
 
     <p>A function that, given a logical vector specifying which planning
 units are selected, returns the corresponding objective function value. If
-the objective function is called with <code>components = FALSE</code>, then a list is
+the objective function is called with <code>components = TRUE</code>, then a list is
 returned with the three components of the object function:</p><ul>
 <li><p><code>mc</code>: the metapoplation capacity of each species.</p></li>
 <li><p><code>cost</code>: the cost of the reserve network.</p></li>
-<li><p><code>boundary</code>: the total boundary length, in km, of the reserve network.</p></li>
+<li><p><code>perimeter</code>: the total perimeter length, in the specified units, of the
+reserve network.</p></li>
 </ul>
 
     
@@ -200,7 +201,7 @@ returned with the three components of the object function:</p><ul>
 
 <span class='co'># build an objective function</span>
 <span class='no'>objective</span> <span class='kw'>&lt;-</span> <span class='fu'>generate_objective</span>(<span class='no'>features</span>, <span class='no'>disp_f</span>, <span class='no'>budget</span>, <span class='kw'>delta</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-                                <span class='kw'>blm</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"km"</span>)
+                                <span class='kw'>blm</span> <span class='kw'>=</span> <span class='fl'>0.001</span>)
 
 <span class='co'># calculate objective</span>
 <span class='no'>selected</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fu'>c</span>(<span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>), <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.7</span>, <span class='fl'>0.3</span>))
@@ -211,9 +212,9 @@ returned with the three components of the object function:</p><ul>
 #&gt; $cost
 #&gt; [1] 16.64237
 #&gt; 
-#&gt; $boundary
-#&gt; [1] 0
-#&gt; </div><div class='input'><span class='fu'>objective</span>(<span class='no'>selected</span>)</div><div class='output co'>#&gt; [1] 0.0002922179</div></pre>
+#&gt; $perimeter
+#&gt; [1] 2.412
+#&gt; </div><div class='input'><span class='fu'>objective</span>(<span class='no'>selected</span>)</div><div class='output co'>#&gt; [1] -0.002119782</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
