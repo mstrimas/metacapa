@@ -38,7 +38,7 @@ patch_config.RasterLayer <- function(x, units = c("km", "m")) {
                      class = "patch_config")
     return(out)
   }
-  p <- raster::clump(x, directions = 4, gaps = F)
+  p <- raster::clump(x, directions = 4, gaps = FALSE)
   p <- raster::rasterToPolygons(p, dissolve = TRUE)
   patch_config.SpatialPolygons(p, units = units)
 }

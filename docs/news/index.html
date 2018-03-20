@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate dispersal kernel functions — dispersal • metacapa</title>
+<title>Changelog • metacapa</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Generate dispersal kernel functions — dispersal" />
-
-<meta property="og:description" content="Generate linear or negative exponential dispersal kernel functions, taking a
-distance, d, and returning the probability density of dispersing that
-distance." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -43,7 +38,7 @@ distance." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -87,66 +82,33 @@ distance." />
       </header>
 
       <div class="row">
-  <div class="col-md-9 contents">
+
+  <div class="col-md-9">
     <div class="page-header">
-    <h1>Generate dispersal kernel functions</h1>
-    <small>Source: <a href='https:/github.com/mstrimas/metacapa/blob/master/R/dispersal.r'><code>R/dispersal.r</code></a></small>
+      <h1>Change log <small></small></h1>
+      <small>Source: <a href='https:/github.com/mstrimas/metacapa/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    
-    <p>Generate linear or negative exponential dispersal kernel functions, taking a
-distance, <code>d</code>, and returning the probability density of dispersing that
-distance.</p>
-    
-
-    <pre class="usage"><span class='fu'>dispersal_linear</span>(<span class='no'>dmax</span>)
-
-<span class='fu'>dispersal_negexp</span>(<span class='no'>alpha</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>dmax</th>
-      <td><p>numeric; maximum dispersal distance.</p></td>
-    </tr>
-    <tr>
-      <th>alpha</th>
-      <td><p>numeric; exponential decay rate parameter, equal to the inverse
-of the mean dispersal distance.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dispersal kernel function.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The available dispersal kernel functions are:</p><ul>
-<li><p><code>dispersal_linear</code>: decays linearly from 1 and <code>d = 0</code> to 0 at <code>d = dmax</code>.</p></li>
-<li><p><code>dispersal_negexp</code>: decays exponentially with rate parameter <code>alpha</code>.</p></li>
+    <div class="contents">
+    <div id="metacapa-0-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#metacapa-0-1-0" class="anchor"></a>metacapa 0.1.0</h1>
+<ul>
+<li>First CRAN release</li>
 </ul>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dl</span> <span class='kw'>&lt;-</span> <span class='fu'>dispersal_linear</span>(<span class='fl'>10</span>)
-<span class='no'>dne</span> <span class='kw'>&lt;-</span> <span class='fu'>dispersal_negexp</span>(<span class='fl'>1</span>/<span class='fl'>5</span>)
-<span class='fu'>dl</span>(<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>dne</span>(<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 0.3678794</div></pre>
+</div>
+    </div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#metacapa-0-1-0">0.1.0</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
       <footer>

@@ -6,3 +6,4 @@
 ^appveyor\.yml$
 ^docs$
 ^LICENSE\.md$
+^cran-comments\.md$
