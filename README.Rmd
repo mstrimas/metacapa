@@ -82,4 +82,12 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 mc_reserve(s, selected, disp_f)
 ```
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+## Contributing
+
+To contribute to the development of this project please refer to the [guidelines](CONTRIBUTING.md).
+
 ## References

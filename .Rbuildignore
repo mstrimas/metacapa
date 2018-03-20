@@ -8,3 +8,5 @@
 ^LICENSE\.md$
 ^cran-comments\.md$
 ^bibliography\.bib$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
