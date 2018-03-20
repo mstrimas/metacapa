@@ -1,4 +1,4 @@
-#' Caculate the perimeter of a reserve network
+#' Calculate the perimeter of a reserve network
 #'
 #' @inheritParams mc_reserve
 #' @return A `units` object giving the reserve perimeter in the specified units.

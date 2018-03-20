@@ -50,3 +50,14 @@ pc <- patch_config(r, "m")
 f <- dispersal_negexp(1 / 100)
 meta_capacity(pc, f = f)
 }
+\references{
+\itemize{
+\item Hanski, I, & O Ovaskainen (2000). The metapopulation capacity of a
+fragmented landscape. Nature, 404(6779), 755.
+\href{http://doi.org/10.1038/35008063}{doi:10.1038/35008063}
+\item Schnell, JK, GM Harris, SL Pimm, & GJ Russell (2013). Estimating
+Extinction Risk with Metapopulation Models of Large‐Scale Fragmentation.
+Conservation Biology, 27(3), 520-530.
+\href{http://doi.org/10.1111/cobi.12047}{doi:10.1111/cobi.12047}
+}
+}

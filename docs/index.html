@@ -11,7 +11,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Metapopulation Capacity-based Conservation Prioritization">
 <meta property="og:description" content="
-  Tools for calculating Hanski and Ovaskainen's (2000) metapopulation capacity, 
+  Tools for calculating Hanski and Ovaskainen's (2000 &lt;doi:10.1038/35008063&gt;) metapopulation capacity, 
   a relative metric of metapopulation persistence, and performing 
   persistence-based conservation prioritization based on this metric.">
 <meta name="twitter:card" content="summary">
@@ -75,8 +75,8 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#metacapa-metapopulation-capacity-of-landscapes" class="anchor"></a>metacapa: metapopulation capacity of landscapes</h1></div>
 
-<p>Metapopulation capacity (Hanski &amp; Ovaskainen 2000) is a relative measure of a spatially explicit landscape’s ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The <code>metacapa</code> package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. (2013) to account for self-colonization.</p>
-<p>In addition, <code>metacapa</code> includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie (2018).</p>
+<p>Metapopulation capacity <span class="citation">(Hanski and Ovaskainen 2000)</span> is a relative measure of a spatially explicit landscape’s ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The <code>metacapa</code> package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. <span class="citation">(2013)</span> to account for self-colonization.</p>
+<p>In addition, <code>metacapa</code> includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie <span class="citation">(2018)</span>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -105,7 +105,7 @@ pc &lt;-<span class="st"> </span><span class="kw"><a href="reference/patch_confi
 
 <span class="co"># metapopulation capacity</span>
 <span class="kw"><a href="reference/meta_capacity.html">meta_capacity</a></span>(pc, <span class="dt">f =</span> f)
-<span class="co">#&gt; [1] 302648.6</span></code></pre></div>
+<span class="co">#&gt; [1] 506628.6</span></code></pre></div>
 <p>In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data for three species</span>
 <span class="co"># distributions</span>
@@ -128,16 +128,27 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 <span class="co"># calculate metapopulation capacity for each species</span>
 <span class="kw"><a href="reference/mc_reserve.html">mc_reserve</a></span>(s, selected, disp_f)
 <span class="co">#&gt;            a            b            c </span>
-<span class="co">#&gt; 1.849339e-04 1.320058e-04 9.177311e-05</span></code></pre></div>
-</div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
+<span class="co">#&gt; 9.981627e-05 6.316632e-05 4.746267e-05</span></code></pre></div>
 <pre><code>Hanski, I., and O. Ovaskainen (2000), The metapopulation capacity of a fragmented landscape, Nature, 404: 755–758. doi:10.1038/35008063
 
 Schnell, J.K., G.M. Harris, S.L. Pimm, and G.J. Russel (2013), Estimating extinction risk with metapopulation models of large-scale fragmentation. Conservation Biology, 27: 520–530. doi:10.1111/cobi.12047
 
 Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. In Review.</code></pre>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<div id="refs" class="references">
+<div id="ref-hanski_metapopulation_2000">
+<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58. doi:<a href="https://doi.org/10.1038/35008063">10.1038/35008063</a>.</p>
+</div>
+<div id="ref-schnell_estimating_2013">
+<p>Schnell, Jessica K., Grant M. Harris, Stuart L. Pimm, and Gareth J. Russell. 2013. “Estimating Extinction Risk with Metapopulation Models of Large-Scale Fragmentation.” <em>Conservation Biology</em> 27 (3): 520–30. doi:<a href="https://doi.org/10.1111/cobi.12047">10.1111/cobi.12047</a>.</p>
+</div>
+<div id="ref-strimas-mackey_reserve_2018">
+<p>Strimas-Mackey, Matthew, and Jedediah F. Brodie. 2018. “Reserve Design to Optimize the Long-Term Persistence of Multiple Species.” <em>In Review</em>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>

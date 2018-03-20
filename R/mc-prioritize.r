@@ -5,7 +5,7 @@
 #'
 #' @param objective an objective function to optimize over, typically created by
 #'   [generate_objective()].
-#' @param nsf a neighbourselection function, typically created by
+#' @param nsf a neighbour selection function, typically created by
 #'   [generate_nsf()].
 #' @param x logical vector specifying which planning units are selected as a
 #'   starting point. Traditional conservation prioritization methods, such as

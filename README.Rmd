@@ -2,6 +2,7 @@
 output: github_document
 editor_options: 
   chunk_output_type: console
+bibliography: references.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -21,9 +22,9 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/metacapa)
 [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
 
-Metapopulation capacity (Hanski & Ovaskainen 2000) is a relative measure of a spatially explicit landscape's ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The `metacapa` package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. (2013) to account for self-colonization.
+Metapopulation capacity [@hanski_metapopulation_2000] is a relative measure of a spatially explicit landscape's ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The `metacapa` package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. [-@schnell_estimating_2013] to account for self-colonization.
 
-In addition, `metacapa` includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie (2018).
+In addition, `metacapa` includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie [-@strimas-mackey_reserve_2018].
 
 ## Installation
 
@@ -82,11 +83,3 @@ mc_reserve(s, selected, disp_f)
 ```
 
 ## References
-
-```
-Hanski, I., and O. Ovaskainen (2000), The metapopulation capacity of a fragmented landscape, Nature, 404: 755–758. doi:10.1038/35008063
-
-Schnell, J.K., G.M. Harris, S.L. Pimm, and G.J. Russel (2013), Estimating extinction risk with metapopulation models of large-scale fragmentation. Conservation Biology, 27: 520–530. doi:10.1111/cobi.12047
-
-Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. In Review.
-```

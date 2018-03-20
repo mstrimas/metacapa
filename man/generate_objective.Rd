@@ -33,8 +33,8 @@ compact solutions.}
 \item{scale}{numeric; vales to rescale the metapopulation capacity by, e.g.
 to normalize them between 0-1 one can scale by the maximum,
 species-specific metapopulation capacity given by selecting all planning
-units. This should be a vetor of length 1 or equal in length to the number
-of featurs.}
+units. This should be a vector of length 1 or equal in length to the number
+of features.}
 
 \item{benefit}{function; a function to apply to the scaled metapopulation
 capacity before averaging across species. Often a saturating function is

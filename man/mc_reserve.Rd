@@ -24,8 +24,8 @@ a species present in a planning unit.}
 \item{scale}{numeric; vales to rescale the metapopulation capacity by, e.g.
 to normalize them between 0-1 one can scale by the maximum,
 species-specific metapopulation capacity given by selecting all planning
-units. This should be a vetor of length 1 or equal in length to the number
-of featurs.}
+units. This should be a vector of length 1 or equal in length to the number
+of features.}
 
 \item{units}{character; metapopulation capacity depends on the units used for
 the areas and distances, this argument determines whether these are

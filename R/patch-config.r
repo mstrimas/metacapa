@@ -6,7 +6,7 @@
 #' If the patch network is provided as a `Raster` object, cells included in the
 #' network should be 1, and background cells should be 0 or `NA`. Patches can
 #' also be provided as polygons from either the `sf` or `sp` packages. Spatial
-#' data must be provided in projecred coordinates with units of meters.
+#' data must be provided in projected coordinates with units of meters.
 #'
 #' @param x patch network in raster or vector format, see Details.
 #' @param units character; whether distances and areas should be in meters or

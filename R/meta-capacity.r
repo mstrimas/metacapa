@@ -22,6 +22,15 @@
 #' @return The metapopulation capacity or, if `patch_mc = TRUE`, a list
 #'   containing the metapopulation capacity (`capacity`) and the patch
 #'   contributions (`patch_mc`).
+#' @references
+#'
+#'  - Hanski, I, & O Ovaskainen (2000). The metapopulation capacity of a
+#'  fragmented landscape. Nature, 404(6779), 755.
+#'  [doi:10.1038/35008063](http://doi.org/10.1038/35008063)
+#'  - Schnell, JK, GM Harris, SL Pimm, & GJ Russell (2013). Estimating
+#'  Extinction Risk with Metapopulation Models of Large‐Scale Fragmentation.
+#'  Conservation Biology, 27(3), 520-530.
+#'  [doi:10.1111/cobi.12047](http://doi.org/10.1111/cobi.12047)
 #' @export
 #' @examples
 #' d <- matrix(c(0, 2, 4, 2, 0, 3, 4, 3, 0), nrow = 3)

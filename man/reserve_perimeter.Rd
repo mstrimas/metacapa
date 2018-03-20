@@ -2,7 +2,7 @@
 % Please edit documentation in R/reserve-perimeter.r
 \name{reserve_perimeter}
 \alias{reserve_perimeter}
-\title{Caculate the perimeter of a reserve network}
+\title{Calculate the perimeter of a reserve network}
 \usage{
 reserve_perimeter(pu, x, units = c("km", "m"))
 }
@@ -22,7 +22,7 @@ measured in meters or kilometers.}
 A \code{units} object giving the reserve perimeter in the specified units.
 }
 \description{
-Caculate the perimeter of a reserve network
+Calculate the perimeter of a reserve network
 }
 \examples{
 r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",

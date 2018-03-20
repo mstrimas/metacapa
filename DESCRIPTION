@@ -6,7 +6,7 @@ Authors@R: c(
   person("Jedediah", "Brodie", email = "jedediah.brodie@mso.umt.edu", role = c("ctb"))
   )
 Description:
-  Tools for calculating Hanski and Ovaskainen's (2000) metapopulation capacity, 
+  Tools for calculating Hanski and Ovaskainen's (2000 <doi:10.1038/35008063>) metapopulation capacity, 
   a relative metric of metapopulation persistence, and performing 
   persistence-based conservation prioritization based on this metric.
 Depends: R (>= 3.3.0)

@@ -24,7 +24,7 @@ interpatch distances.
 If the patch network is provided as a \code{Raster} object, cells included in the
 network should be 1, and background cells should be 0 or \code{NA}. Patches can
 also be provided as polygons from either the \code{sf} or \code{sp} packages. Spatial
-data must be provided in projecred coordinates with units of meters.
+data must be provided in projected coordinates with units of meters.
 }
 \examples{
 # raster

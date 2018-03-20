@@ -11,7 +11,7 @@ mc_prioritize(objective, nsf, x, n = 10000L, itemp = 10, n_temp = 10L,
 \item{objective}{an objective function to optimize over, typically created by
 \code{\link[=generate_objective]{generate_objective()}}.}
 
-\item{nsf}{a neighbourselection function, typically created by
+\item{nsf}{a neighbour selection function, typically created by
 \code{\link[=generate_nsf]{generate_nsf()}}.}
 
 \item{x}{logical vector specifying which planning units are selected as a

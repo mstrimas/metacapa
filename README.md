@@ -3,11 +3,11 @@
 metacapa: metapopulation capacity of landscapes
 ===============================================
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Travis-CI Build Status](https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/metacapa) [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Travis-CI Build Status](https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/metacapa) [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
 
-Metapopulation capacity (Hanski & Ovaskainen 2000) is a relative measure of a spatially explicit landscape's ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The `metacapa` package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. (2013) to account for self-colonization.
+Metapopulation capacity (Hanski and Ovaskainen (2000)) is a relative measure of a spatially explicit landscape's ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The `metacapa` package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. (Schnell et al. (2013)) to account for self-colonization.
 
-In addition, `metacapa` includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie (2018).
+In addition, `metacapa` includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie (Strimas-Mackey and Brodie (2018)).
 
 Installation
 ------------
@@ -38,12 +38,11 @@ f <- dispersal_negexp(1 / 100)
 
 # calulate the areas and interpatch distances
 pc <- patch_config(r, "m")
-#> Loading required namespace: igraph
 #> Loading required namespace: rgeos
 
 # metapopulation capacity
 meta_capacity(pc, f = f)
-#> [1] 474996.2
+#> [1] 416566.8
 ```
 
 In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.
@@ -70,14 +69,20 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 # calculate metapopulation capacity for each species
 mc_reserve(s, selected, disp_f)
 #>            a            b            c 
-#> 4.667506e-05 8.572779e-05 4.665600e-05
+#> 2.013639e-04 4.665605e-05 3.309247e-05
 ```
-
-References
-----------
 
     Hanski, I., and O. Ovaskainen (2000), The metapopulation capacity of a fragmented landscape, Nature, 404: 755–758. doi:10.1038/35008063
 
     Schnell, J.K., G.M. Harris, S.L. Pimm, and G.J. Russel (2013), Estimating extinction risk with metapopulation models of large-scale fragmentation. Conservation Biology, 27: 520–530. doi:10.1111/cobi.12047
 
     Strimas-Mackey, M. and J.F. Brodie (2018), Reserve design to optimize the long-term persistence of multiple species. In Review.
+
+References
+----------
+
+Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” *Nature* 404 (6779): 755–58. doi:[10.1038/35008063](https://doi.org/10.1038/35008063).
+
+Schnell, Jessica K., Grant M. Harris, Stuart L. Pimm, and Gareth J. Russell. 2013. “Estimating Extinction Risk with Metapopulation Models of Large-Scale Fragmentation.” *Conservation Biology* 27 (3): 520–30. doi:[10.1111/cobi.12047](https://doi.org/10.1111/cobi.12047).
+
+Strimas-Mackey, Matthew, and Jedediah F. Brodie. 2018. “Reserve Design to Optimize the Long-Term Persistence of Multiple Species.” *In Review*.
