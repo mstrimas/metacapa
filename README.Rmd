@@ -1,8 +1,8 @@
 ---
-output: github_document
+output: md_document
 editor_options: 
   chunk_output_type: console
-bibliography: references.bib
+bibliography: bibliography.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
