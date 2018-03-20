@@ -59,7 +59,7 @@ of a species, calculate the metapopulation capacity.
 
     # metapopulation capacity
     meta_capacity(pc, f = f)
-    #> [1] 584423.8
+    #> [1] 991817.5
 
 In the context of conservation prioritization, the landscape is divided
 into planning units, a subset of which are selected for inclusion in a
@@ -88,7 +88,7 @@ each planning unit.
     # calculate metapopulation capacity for each species
     mc_reserve(s, selected, disp_f)
     #>            a            b            c 
-    #> 1.806628e-04 9.332961e-05 4.681222e-05
+    #> 2.424891e-04 4.671311e-05 6.335232e-05
 
 Code of Conduct
 ---------------

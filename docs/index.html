@@ -105,7 +105,7 @@ pc &lt;-<span class="st"> </span><span class="kw"><a href="reference/patch_confi
 
 <span class="co"># metapopulation capacity</span>
 <span class="kw"><a href="reference/meta_capacity.html">meta_capacity</a></span>(pc, <span class="dt">f =</span> f)
-<span class="co">#&gt; [1] 467466.5</span></code></pre></div>
+<span class="co">#&gt; [1] 411629.8</span></code></pre></div>
 <p>In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data for three species</span>
 <span class="co"># distributions</span>
@@ -128,7 +128,7 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 <span class="co"># calculate metapopulation capacity for each species</span>
 <span class="kw"><a href="reference/mc_reserve.html">mc_reserve</a></span>(s, selected, disp_f)
 <span class="co">#&gt;            a            b            c </span>
-<span class="co">#&gt; 3.197532e-04 8.572780e-05 6.632217e-05</span></code></pre></div>
+<span class="co">#&gt; 5.485531e-05 1.713298e-05 2.392968e-05</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
@@ -176,7 +176,8 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 </ul>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Matthew Strimas-Mackey <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8929-7776" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
+<li>
+<a href="http://strimas.com">Matthew Strimas-Mackey</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8929-7776" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
@@ -192,7 +193,7 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 
 
       <footer><div class="copyright">
-  <p>Developed by Matthew Strimas-Mackey.</p>
+  <p>Developed by <a href="http://strimas.com">Matthew Strimas-Mackey</a>.</p>
 </div>
 
 <div class="pkgdown">
