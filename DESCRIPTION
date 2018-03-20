@@ -2,7 +2,7 @@ Package: metacapa
 Title: Metapopulation Capacity-based Conservation Prioritization
 Version: 0.1.0
 Authors@R: c(
-  person("Matthew", "Strimas-Mackey", email = "mstrimas@gmail.com", role = c("aut", "cre")),
+  person("Matthew", "Strimas-Mackey", email = "mstrimas@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8929-7776")),
   person("Jedediah", "Brodie", email = "jedediah.brodie@mso.umt.edu", role = c("ctb"))
   )
 Description:
@@ -10,7 +10,7 @@ Description:
   a relative metric of metapopulation persistence, and performing 
   persistence-based conservation prioritization based on this metric.
 Depends: R (>= 3.3.0)
-License: GPL-3 + file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:

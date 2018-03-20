@@ -43,7 +43,7 @@ pc <- patch_config(r, "m")
 
 # metapopulation capacity
 meta_capacity(pc, f = f)
-#> [1] 228154
+#> [1] 474996.2
 ```
 
 In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.
@@ -70,7 +70,7 @@ selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 # calculate metapopulation capacity for each species
 mc_reserve(s, selected, disp_f)
 #>            a            b            c 
-#> 1.320595e-04 8.572781e-05 6.369748e-05
+#> 4.667506e-05 8.572779e-05 4.665600e-05
 ```
 
 References
