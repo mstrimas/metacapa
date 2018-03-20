@@ -168,10 +168,10 @@ data must be provided in projecred coordinates with units of meters.</p>
 #&gt; attr(,"class")
 #&gt; [1] "patch_config"</div><div class='input'>
 <span class='co'># polygon</span>
-<span class='no'>p_sp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/rasterToPolygons'>rasterToPolygons</a></span>(<span class='no'>r</span>, <span class='kw'>dissolve</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>p_sp</span> <span class='kw'>&lt;-</span> <span class='no'>p_sp</span>[<span class='no'>p_sp</span>$<span class='no'>layer</span> <span class='kw'>==</span> <span class='fl'>1</span>, ]
-<span class='no'>p_sp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sp/topics/disaggregate'>disaggregate</a></span>(<span class='no'>p_sp</span>)
-<span class='fu'>patch_config</span>(<span class='no'>p_sp</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"km"</span>)</div><div class='output co'>#&gt; $areas
+<span class='no'>p_poly</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/rasterToPolygons'>rasterToPolygons</a></span>(<span class='no'>r</span>, <span class='kw'>dissolve</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>p_poly</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sf/topics/st_as_sf'>st_as_sf</a></span>(<span class='no'>p_poly</span>)
+<span class='no'>p_poly</span> <span class='kw'>&lt;-</span> <span class='no'>p_poly</span>[<span class='no'>p_poly</span>$<span class='no'>layer</span> <span class='kw'>==</span> <span class='fl'>1</span>, ]
+<span class='no'>p_poly</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/sf/topics/st_cast'>st_cast</a></span>(<span class='no'>p_poly</span>, <span class='st'>"POLYGON"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: repeating attributes for all sub-geometries for which they may not be constant</span></div><div class='input'><span class='fu'>patch_config</span>(<span class='no'>p_poly</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"km"</span>)</div><div class='output co'>#&gt; $areas
 #&gt;  [1] 0.000648 0.001944 0.000648 0.001296 0.000648 0.001296 0.000648 0.000648
 #&gt;  [9] 0.000648 0.001296 0.000648 0.000648 0.001296 0.003240
 #&gt; 

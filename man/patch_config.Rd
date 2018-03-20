@@ -33,8 +33,9 @@ r[] <- round(runif(raster::ncell(r)) * 0.7)
 patch_config(r, units = "m")
 
 # polygon
-p_sp <- raster::rasterToPolygons(r, dissolve = TRUE)
-p_sp <- p_sp[p_sp$layer == 1, ]
-p_sp <- sp::disaggregate(p_sp)
-patch_config(p_sp, units = "km")
+p_poly <- raster::rasterToPolygons(r, dissolve = TRUE)
+p_poly <- sf::st_as_sf(p_poly)
+p_poly <- p_poly[p_poly$layer == 1, ]
+p_poly <- sf::st_cast(p_poly, "POLYGON")
+patch_config(p_poly, units = "km")
 }

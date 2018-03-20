@@ -22,10 +22,11 @@
 #' patch_config(r, units = "m")
 #'
 #' # polygon
-#' p_sp <- raster::rasterToPolygons(r, dissolve = TRUE)
-#' p_sp <- p_sp[p_sp$layer == 1, ]
-#' p_sp <- sp::disaggregate(p_sp)
-#' patch_config(p_sp, units = "km")
+#' p_poly <- raster::rasterToPolygons(r, dissolve = TRUE)
+#' p_poly <- sf::st_as_sf(p_poly)
+#' p_poly <- p_poly[p_poly$layer == 1, ]
+#' p_poly <- sf::st_cast(p_poly, "POLYGON")
+#' patch_config(p_poly, units = "km")
 patch_config <- function(x, units = c("m", "km")) {
   UseMethod("patch_config")
 }
@@ -37,6 +38,9 @@ patch_config.RasterLayer <- function(x, units = c("km", "m")) {
                           distances = matrix(nrow = 0, ncol = 0)),
                      class = "patch_config")
     return(out)
+  }
+  if (!requireNamespace("igraph", quietly = TRUE)) {
+    stop("Install package 'igraph' to use patch_config() with Raster objects.")
   }
   p <- raster::clump(x, directions = 4, gaps = FALSE)
   p <- raster::rasterToPolygons(p, dissolve = TRUE)

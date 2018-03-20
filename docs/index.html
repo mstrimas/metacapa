@@ -101,12 +101,11 @@ f &lt;-<span class="st"> </span><span class="kw"><a href="reference/dispersal.ht
 
 <span class="co"># calulate the areas and interpatch distances</span>
 pc &lt;-<span class="st"> </span><span class="kw"><a href="reference/patch_config.html">patch_config</a></span>(r, <span class="st">"m"</span>)
-<span class="co">#&gt; Loading required namespace: igraph</span>
 <span class="co">#&gt; Loading required namespace: rgeos</span>
 
 <span class="co"># metapopulation capacity</span>
 <span class="kw"><a href="reference/meta_capacity.html">meta_capacity</a></span>(pc, <span class="dt">f =</span> f)
-<span class="co">#&gt; [1] 392884.8</span></code></pre></div>
+<span class="co">#&gt; [1] 302648.6</span></code></pre></div>
 <p>In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># generate data for three species</span>
 <span class="co"># distributions</span>
@@ -129,7 +128,7 @@ selected &lt;-<span class="st"> </span><span class="kw">sample</span>(<span clas
 <span class="co"># calculate metapopulation capacity for each species</span>
 <span class="kw"><a href="reference/mc_reserve.html">mc_reserve</a></span>(s, selected, disp_f)
 <span class="co">#&gt;            a            b            c </span>
-<span class="co">#&gt; 1.852132e-04 1.844843e-04 1.785385e-05</span></code></pre></div>
+<span class="co">#&gt; 1.849339e-04 1.320058e-04 9.177311e-05</span></code></pre></div>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
