@@ -12,5 +12,5 @@ projection_units <- function(x) {
   if (isTRUE(attr(class(x), "package") == "sp")) {
     x <- sf::st_as_sf(x)
   }
-  units::make_unit(sf::st_crs(x)$units)
+  units::as_units(sf::st_crs(x)$units)
 }
