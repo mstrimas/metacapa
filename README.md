@@ -1,17 +1,13 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-metacapa: metapopulation capacity of landscapes
-===============================================
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+# metacapa: metapopulation capacity of landscapes
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-deprecated.svg)](https://www.tidyverse.org/lifecycle/#deprecated)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Travis-CI Build
-Status](https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/mstrimas/metacapa)
-[![AppVeyor Build
-Status](https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows)](https://ci.appveyor.com/project/mstrimas/metacapa)
 
 Metapopulation capacity (Hanski and Ovaskainen 2000) is a relative
-measure of a spatially explicit landscape's ability to support a
+measure of a spatially explicit landscape’s ability to support a
 metapopulation of a species. It is calculated as the dominant eigenvalue
 of a landscape matrix that encapsulates the areas and interpatch
 distances of the landscape, as well as the dispersal ability of the
@@ -28,16 +24,14 @@ conservation prioritization exercises using metapopulation capacity. In
 particular, this package implements the method developed by
 Strimas-Mackey and Bodie (2018).
 
-Installation
-------------
+## Installation
 
 You can install metacapa from github with:
 
     # install.packages("devtools")
     devtools::install_github("mstrimas/metacapa")
 
-Example
--------
+## Example
 
 Given a configuration of habitat patches and a disersal kernel function
 of a species, calculate the metapopulation capacity.
@@ -55,11 +49,10 @@ of a species, calculate the metapopulation capacity.
 
     # calulate the areas and interpatch distances
     pc <- patch_config(r, "m")
-    #> Loading required namespace: rgeos
 
     # metapopulation capacity
     meta_capacity(pc, f = f)
-    #> [1] 991817.5
+    #> [1] 625907.5
 
 In the context of conservation prioritization, the landscape is divided
 into planning units, a subset of which are selected for inclusion in a
@@ -88,32 +81,29 @@ each planning unit.
     # calculate metapopulation capacity for each species
     mc_reserve(s, selected, disp_f)
     #>            a            b            c 
-    #> 2.424891e-04 4.671311e-05 6.335232e-05
+    #> 8.572962e-05 1.026432e-04 3.299077e+04
 
-Code of Conduct
----------------
+## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
 to abide by its terms.
 
-Contributing
-------------
+## Contributing
 
 To contribute to the development of this project please refer to the
 [guidelines](CONTRIBUTING.md).
 
-References
-----------
+## References
 
 Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity
 of a Fragmented Landscape.” *Nature* 404 (6779): 755–58.
-doi:[10.1038/35008063](https://doi.org/10.1038/35008063).
+<https://doi.org/10.1038/35008063>.
 
 Schnell, Jessica K., Grant M. Harris, Stuart L. Pimm, and Gareth J.
 Russell. 2013. “Estimating Extinction Risk with Metapopulation Models of
 Large-Scale Fragmentation.” *Conservation Biology* 27 (3): 520–30.
-doi:[10.1111/cobi.12047](https://doi.org/10.1111/cobi.12047).
+<https://doi.org/10.1111/cobi.12047>.
 
 Strimas-Mackey, Matthew, and Jedediah F. Brodie. 2018. “Reserve Design
 to Optimize the Long-Term Persistence of Multiple Species.” *In Review*.

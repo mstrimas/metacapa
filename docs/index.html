@@ -49,7 +49,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="metacapa-metapopulation-capacity-of-landscapes">metacapa: metapopulation capacity of landscapes<a class="anchor" aria-label="anchor" href="#metacapa-metapopulation-capacity-of-landscapes"></a>
 </h1></div>
-<p><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://travis-ci.org/mstrimas/metacapa" class="external-link"><img src="https://img.shields.io/travis/mstrimas/metacapa/master.svg?label=Mac%20OSX%20%26%20Linux" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/mstrimas/metacapa" class="external-link"><img src="https://img.shields.io/appveyor/ci/mstrimas/metacapa/master.svg?label=Windows" alt="AppVeyor Build Status"></a></p>
+<p><a href="https://www.tidyverse.org/lifecycle/#deprecated" class="external-link"><img src="https://img.shields.io/badge/lifecycle-deprecated.svg" alt="lifecycle"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
 <p>Metapopulation capacity (Hanski and Ovaskainen 2000) is a relative measure of a spatially explicit landscape’s ability to support a metapopulation of a species. It is calculated as the dominant eigenvalue of a landscape matrix that encapsulates the areas and interpatch distances of the landscape, as well as the dispersal ability of the species. Since metapopulation capacity can rank landscapes by their ability to support a species in the long term, it is a useful metric for evaluating alternative scenerios in the context of conservation plannaing and prioritization. The <code>metacapa</code> package implements the calculation of metapopulation capacity, both the original formulation and the modification proposed by Schnell et al. (2013) to account for self-colonization.</p>
 <p>In addition, <code>metacapa</code> includes tools for performing persistence-based conservation prioritization exercises using metapopulation capacity. In particular, this package implements the method developed by Strimas-Mackey and Bodie (2018).</p>
 <div class="section level2">
@@ -76,11 +76,10 @@
 <span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># calulate the areas and interpatch distances</span></span>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>pc <span class="ot">&lt;-</span> <span class="fu">patch_config</span>(r, <span class="st">"m"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; Loading required namespace: rgeos</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co"># metapopulation capacity</span></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="fu">meta_capacity</span>(pc, <span class="at">f =</span> f)</span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt; [1] 991817.5</span></span></code></pre></div>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co"># metapopulation capacity</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="fu">meta_capacity</span>(pc, <span class="at">f =</span> f)</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; [1] 625907.5</span></span></code></pre></div>
 <p>In the context of conservation prioritization, the landscape is divided into planning units, a subset of which are selected for inclusion in a candidate reserve network. Metapopulation capcity can be calcualted for a suite of species, given data on the occurrence of each species within each planning unit.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># generate data for three species</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># distributions</span></span>
@@ -103,7 +102,7 @@
 <span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co"># calculate metapopulation capacity for each species</span></span>
 <span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="fu">mc_reserve</span>(s, selected, disp_f)</span>
 <span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt;            a            b            c </span></span>
-<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; 2.424891e-04 4.671311e-05 6.335232e-05</span></span></code></pre></div>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; 8.572962e-05 1.026432e-04 3.299077e+04</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -118,8 +117,8 @@
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58. <a href="doi:%5B10.1038/35008063" class="uri">doi:[10.1038/35008063</a>](<a href="https://doi.org/10.1038/35008063" class="external-link uri">https://doi.org/10.1038/35008063</a>).</p>
-<p>Schnell, Jessica K., Grant M. Harris, Stuart L. Pimm, and Gareth J. Russell. 2013. “Estimating Extinction Risk with Metapopulation Models of Large-Scale Fragmentation.” <em>Conservation Biology</em> 27 (3): 520–30. <a href="doi:%5B10.1111/cobi.12047" class="uri">doi:[10.1111/cobi.12047</a>](<a href="https://doi.org/10.1111/cobi.12047" class="external-link uri">https://doi.org/10.1111/cobi.12047</a>).</p>
+<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58. <a href="https://doi.org/10.1038/35008063" class="external-link uri">https://doi.org/10.1038/35008063</a>.</p>
+<p>Schnell, Jessica K., Grant M. Harris, Stuart L. Pimm, and Gareth J. Russell. 2013. “Estimating Extinction Risk with Metapopulation Models of Large-Scale Fragmentation.” <em>Conservation Biology</em> 27 (3): 520–30. <a href="https://doi.org/10.1111/cobi.12047" class="external-link uri">https://doi.org/10.1111/cobi.12047</a>.</p>
 <p>Strimas-Mackey, Matthew, and Jedediah F. Brodie. 2018. “Reserve Design to Optimize the Long-Term Persistence of Multiple Species.” <em>In Review</em>.</p>
 </div>
 </div>
