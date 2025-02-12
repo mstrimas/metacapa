@@ -18,6 +18,6 @@ Get projection units of an sf object
 \examples{
 pts <- sf::st_sfc(sf::st_point(c(0, 0)), sf::st_point(c(1, 1)))
 pts_df <- sf::st_sf(a = 1:2, geom = pts)
-sf::st_crs(pts_df) = "+proj=aea"
+pts_df <- sf::st_set_crs(pts_df, "+proj=laea")
 projection_units(pts_df)
 }

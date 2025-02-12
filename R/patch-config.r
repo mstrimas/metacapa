@@ -17,7 +17,7 @@
 #' @export
 #' @examples
 #' # raster
-#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea")
+#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea")
 #' r[] <- round(runif(raster::ncell(r)) * 0.7)
 #' patch_config(r, units = "m")
 #'
@@ -66,13 +66,7 @@ patch_config.sfc <- function(x, units = c("km", "m")) {
   }
 
   # distance matrix
-  if (requireNamespace("rgeos", quietly = TRUE)) {
-    d <- rgeos::gDistance(methods::as(x, "Spatial"), byid = TRUE)
-    dimnames(d) <- NULL
-    d <- units::set_units(d, projection_units(x), mode = "standard")
-  } else {
-    d <- sf::st_distance(x)
-  }
+  d <- sf::st_distance(x)
   # change units
   d <- units::set_units(d, units, mode = "standard")
   d <- matrix(d, dim(d)[1], dim(d)[2])

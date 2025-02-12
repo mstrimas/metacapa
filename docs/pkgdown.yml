@@ -1,5 +1,8 @@
-pandoc: 1.19.2.1
-pkgdown: 0.1.0.9000
-pkgdown_sha: 9fcc3acd70db8ea9ccb2d55efe7cd573eecbbb4b
-articles: []
-
+pandoc: '3.2'
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles: {}
+last_built: 2025-02-12T20:58Z
+urls:
+  reference: https://mstrimas.github.io/metacapa/reference
+  article: https://mstrimas.github.io/metacapa/articles

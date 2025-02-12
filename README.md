@@ -47,7 +47,7 @@ of a species, calculate the metapopulation capacity.
     library(metacapa)
 
     # generate a network of patches
-    r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea")
+    r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea")
     r[] <- round(runif(raster::ncell(r)) * 0.7)
 
     # exponential dispersal kernel
@@ -71,7 +71,7 @@ each planning unit.
     # distributions
     r <- raster(nrows = 10, ncols = 10, 
                 #xmn = 0, xmx = 1, ymn = 0, ymx = 1,
-                crs = "+proj=aea",
+                crs = "+proj=laea",
                 vals = sample(0:1, 100, replace = TRUE))
     s <- stack(r, r, r)
     s[[2]][] <- sample(0:1, 100, replace = TRUE, prob = c(0.6, 0.4))

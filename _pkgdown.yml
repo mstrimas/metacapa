@@ -1,3 +1,7 @@
+url: https://mstrimas.github.io/metacapa/
+template:
+  bootstrap: 5
 authors:
   Matthew Strimas-Mackey:
     href: http://strimas.com
+

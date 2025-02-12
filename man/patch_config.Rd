@@ -28,7 +28,7 @@ data must be provided in projected coordinates with units of meters.
 }
 \examples{
 # raster
-r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea")
+r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea")
 r[] <- round(runif(raster::ncell(r)) * 0.7)
 patch_config(r, units = "m")
 

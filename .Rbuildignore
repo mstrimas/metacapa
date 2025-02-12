@@ -10,3 +10,5 @@
 ^bibliography\.bib$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
+^_pkgdown\.yml$
+^pkgdown$

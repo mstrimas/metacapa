@@ -38,7 +38,7 @@
 #' f <- dispersal_negexp(1)
 #' meta_capacity(d, a, f)
 #'
-#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea")
+#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea")
 #' r[] <- round(runif(raster::ncell(r)) * 0.7)
 #' pc <- patch_config(r, "m")
 #' f <- dispersal_negexp(1 / 100)

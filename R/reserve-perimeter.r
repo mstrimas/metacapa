@@ -4,7 +4,7 @@
 #' @return A `units` object giving the reserve perimeter in the specified units.
 #' @export
 #' @examples
-#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",
+#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea",
 #'                     vals = sample(0:1, 100, replace = TRUE))
 #' selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 #' reserve_perimeter(r, selected)

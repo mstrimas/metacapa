@@ -4,11 +4,19 @@
 \alias{mc_reserve}
 \title{Metapopulation capacity of a candidate reserve}
 \usage{
-mc_reserve(pu, x, f, threshold = 0, scale = 1, units = c("km", "m"),
-  parallel = FALSE, ...)
+mc_reserve(
+  pu,
+  x,
+  f,
+  threshold = 0,
+  scale = 1,
+  units = c("km", "m"),
+  parallel = FALSE,
+  ...
+)
 }
 \arguments{
-\item{pu}{\link[raster:RasterStack-class]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or
+\item{pu}{\link[raster:Raster-classes]{raster::RasterStack}, \link[sp:SpatialPolygons]{sp::SpatialPolygonsDataFrame}, or
 \link[sf:sf]{sf::sf} object; planning units and representation levels of features as
 layers (raster inputs) or columns (vector inputs).}
 
@@ -48,7 +56,7 @@ planning units.
 }
 \examples{
 # generate data
-r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",
+r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea",
                     vals = sample(0:1, 100, replace = TRUE))
 s <- raster::stack(r, r, r)
 s[[2]][] <- sample(0:1, 100, replace = TRUE, prob = c(0.6, 0.4))

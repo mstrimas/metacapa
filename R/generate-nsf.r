@@ -40,7 +40,7 @@
 #' @export
 #' @examples
 #' # generate data
-#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea", vals = 0)
+#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea", vals = 0)
 #' # lock some units to be unchanged
 #' names(r) <- "locked_out"
 #' r[sample(1:100, 10)] <- 1

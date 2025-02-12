@@ -4,8 +4,16 @@
 \alias{mc_prioritize}
 \title{Metapopulation capacity-based prioritization}
 \usage{
-mc_prioritize(objective, nsf, x, n = 10000L, itemp = 10, n_temp = 10L,
-  maximize = TRUE, verbose = TRUE)
+mc_prioritize(
+  objective,
+  nsf,
+  x,
+  n = 10000L,
+  itemp = 10,
+  n_temp = 10L,
+  maximize = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{objective}{an objective function to optimize over, typically created by
@@ -45,7 +53,7 @@ prioritization using simulated annealing.
 }
 \examples{
 # generate features
-r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",
+r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea",
                     vals = sample(0:1, 100, replace = TRUE))
 s <- raster::stack(r, r, r)
 s[[2]][] <- sample(0:1, 100, replace = TRUE, prob = c(0.6, 0.4))

@@ -31,7 +31,7 @@
 #' @export
 #' @examples
 #' # generate data
-#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",
+#' r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea",
 #'                     vals = sample(0:1, 100, replace = TRUE))
 #' s <- raster::stack(r, r, r)
 #' s[[2]][] <- sample(0:1, 100, replace = TRUE, prob = c(0.6, 0.4))

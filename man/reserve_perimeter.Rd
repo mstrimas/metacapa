@@ -7,7 +7,7 @@
 reserve_perimeter(pu, x, units = c("km", "m"))
 }
 \arguments{
-\item{pu}{\link[raster:RasterStack-class]{raster::RasterStack}, \link[sp:SpatialPolygonsDataFrame]{sp::SpatialPolygonsDataFrame}, or
+\item{pu}{\link[raster:Raster-classes]{raster::RasterStack}, \link[sp:SpatialPolygons]{sp::SpatialPolygonsDataFrame}, or
 \link[sf:sf]{sf::sf} object; planning units and representation levels of features as
 layers (raster inputs) or columns (vector inputs).}
 
@@ -25,7 +25,7 @@ A \code{units} object giving the reserve perimeter in the specified units.
 Calculate the perimeter of a reserve network
 }
 \examples{
-r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=aea",
+r <- raster::raster(nrows = 10, ncols = 10, crs = "+proj=laea",
                     vals = sample(0:1, 100, replace = TRUE))
 selected <- sample(c(FALSE, TRUE), 100, replace = TRUE, prob = c(0.7, 0.3))
 reserve_perimeter(r, selected)
